@@ -56,13 +56,13 @@ public class ContemplateAboutAssertions {
     @Test(dependsOnMethods = { "aboutAssertEquals" })
     public void aboutAssertNotNull() throws Exception {
         Object o = null;
-        assertNotNull("To reach a higher level of awareness, cause myBoolean to be anything else than Null", o);
+        assertNotNull("To reach a higher level of awareness, cause o to be anything else than Null", o);
     }
 
     @Test(dependsOnMethods = { "aboutAssertNotNull" })
     public void aboutAssertNull() throws Exception {
         Object o = new Object();
-        assertNull("To reach a higher level of awareness, cause myBoolean to be Null", o);
+        assertNull("To reach a higher level of awareness, cause o to be Null", o);
     }
 
 
