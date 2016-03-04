@@ -13,7 +13,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class ContemplateAboutTheEmptyJsonObject {
 
 
-    @Test(dependsOnMethods = { "de.pardertec.koans.json.ContemplateAboutAssertions.aboutAssertNull"})
+    @Test()
     public void aboutTheSize(){
         JSONObject bazinga = new JSONObject();
 

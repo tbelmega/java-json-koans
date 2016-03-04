@@ -13,7 +13,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class ContemplateAboutComplexJsonObjects {
 
 
-    @Test(dependsOnMethods = { "de.pardertec.koans.json.ContemplateAboutTheEmptyJsonObject.aboutGettingAStringWithIncorrectType" })
+    @Test
     public void aboutAJSONObjectWithMultipleProperties() {
         JSONObject bazinga = new JSONObject();
         bazinga.put("TheAnswer", 42);
