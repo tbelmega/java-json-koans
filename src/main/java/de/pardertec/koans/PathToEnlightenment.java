@@ -33,7 +33,7 @@ public class PathToEnlightenment {
                 ContemplateAboutSimpleJSONObjects.class,
                 ContemplateAboutSimpleJSONArrays.class,
                 ContemplateAboutTypeSafety.class,
-                ContemplateAboutComplexJSONObjects.class
+                ContemplateAboutMoreComplexJSON.class
         };
 
         runner.run(testClassesList);

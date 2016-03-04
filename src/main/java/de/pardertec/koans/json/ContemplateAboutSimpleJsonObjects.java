@@ -10,7 +10,7 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Thiemo on 29.02.2016.
  */
-public class ContemplateAboutSimpleJsonObjects {
+public class ContemplateAboutSimpleJSONObjects {
 
     public static final String END_LINE = "\n\t->";
 

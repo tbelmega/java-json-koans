@@ -1,16 +1,16 @@
 package de.pardertec.koans.json;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
 /**
  * Created by Thiemo on 01.03.2016.
  */
-public class ContemplateAboutComplexJsonObjects {
+public class ContemplateAboutMoreComplexJSON {
 
 
     public static final String END_LINE = "\n\t->";
@@ -71,7 +71,7 @@ public class ContemplateAboutComplexJsonObjects {
 
     @Test(dependsOnMethods = { "aboutTheStringRepresentationOfAJSONObjectWithinAJSONObject" })
     public void aboutConstructingAJSONObjectFromAString(){
-        String stringRepresentation = "{\"Book 2\":{\"Pages\":357,\"Title\":\"The Hitchhiker's Guide to the Galaxy\"}}";
+        String stringRepresentation = "{'Book 2':{'Pages':357,'Title':'The Hitchhiker's Guide to the Galaxy'}}";
         JSONObject bazinga = new JSONObject(stringRepresentation);
 
         boolean containsBook1 = bazinga.has("Book 1");
@@ -79,5 +79,31 @@ public class ContemplateAboutComplexJsonObjects {
         assertTrue("You can use the constructor to construct a JSONObject with all it's properties from a string representation." +
                         " To reach a higher level of awareness, contemplate about how you need to modify the string.",
                 containsBook1);
+    }
+
+    @Test(dependsOnMethods = { "aboutConstructingAJSONObjectFromAString" })
+    public void aboutConstructingAJSONOArrayFromAString(){
+        String stringRepresentation = "[1,2,3,4,'Banana',true,false,\"Darth Vader\",'Double quotation marks and single quotation marks are treated equal.']";
+        JSONArray bazinga = new JSONArray(stringRepresentation);
+
+        Object lukesFather = bazinga.get(4);
+
+        assertEquals("You can use the constructor to construct a JSONArray with all it's elements from a string representation." +
+                        " To reach a higher level of awareness, contemplate about which element you need to get.",
+                "Darth Vader", lukesFather);
+    }
+
+    @Test(dependsOnMethods = { "aboutConstructingAJSONOArrayFromAString" })
+    public void aboutNestedJSONContent(){
+        JSONObject bazinga = new JSONObject("{'Description':'Star Wars'}");
+        JSONArray episodes = new JSONArray();
+        episodes.put(new JSONObject("{'Episode':'VI','Title':'A new hope'}"));
+        episodes.put(new JSONObject("{'Episode':'V','Title':'The empire strikes back'}"));
+        bazinga.put("Episodes", episodes);
+
+        String result = bazinga.getJSONArray("Episodes").getJSONObject(0).getString("Title");
+
+        assertEquals("You can nest JSONObjects in JSONArrays and vice versa to build large data structures." +
+                " To reach a higher level of awareness, contemplate about how to get the expected result out.", "Episode V", result);
     }
 }

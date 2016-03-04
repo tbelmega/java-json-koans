@@ -1,11 +1,9 @@
 package de.pardertec.koans.json;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.fail;
 
 /**
  * Created by Thiemo on 04.03.2016.
@@ -113,57 +111,4 @@ public class ContemplateAboutSimpleJSONArrays {
                         "contemplate about how you sum up the elements of the array." + END_LINE,
                 expectedSum, sum);
     }
-
-    @Test(dependsOnMethods = { "aboutIteratingOverTheArray" })
-    public void aboutElementsOfDifferentTypes(){
-        JSONArray bazinga = new JSONArray();
-        bazinga.put("A JSONArray can hold elements of different types at the same time, which a Java array can not.");
-        bazinga.put(true);
-        bazinga.put(42);
-        bazinga.put(3.1415);
-
-        int indexOfElementToGet = 2; //Change this to get an other element. Mind the expected class.
-        Object elementWithUnknownClass = bazinga.get(indexOfElementToGet);
-        Class<?> clazz = elementWithUnknownClass.getClass();
-
-        assertEquals("To reach a higher level of awareness, " +
-                        "contemplate about which element has the expected type." + END_LINE,
-                String.class, clazz);
-    }
-
-    @Test(dependsOnMethods = { "aboutElementsOfDifferentTypes" })
-    public void aboutGettingAnElementOfTheWrongType(){
-        JSONArray bazinga = new JSONArray();
-        bazinga.put("Be careful about the type of the element you are trying to get.");
-
-        try {
-            int index = 0;
-            Object firstElement = bazinga.getBoolean(index); //change bazinga.getBoolean() to a method that matches the type of the first element
-        } catch (JSONException e) {
-            fail("To reach a higher level of awareness, " +
-                    "contemplate about using the correct getter method.");
-        }
-    }
-
-    @Test(dependsOnMethods = { "aboutGettingAnElementOfTheWrongType" })
-    public void aboutCastingTheElementToItsActualClass(){
-        JSONArray bazinga = new JSONArray();
-        bazinga.put("You can get an element as an instance of Object and cast it to its actual class later.");
-
-        Object firstElement = bazinga.get(0);
-        Class<?> clazz = firstElement.getClass();
-
-        try {
-            if (clazz.equals(String.class)) {
-                boolean value = (boolean) firstElement;
-            } else if (clazz.equals(Integer.class)) {
-                int value = (int) firstElement;
-            }
-        } catch (ClassCastException e) {
-            fail("To reach a higher level of awareness, " +
-                    "contemplate about what class cast is correct.");
-        }
-    }
-
-
 }
