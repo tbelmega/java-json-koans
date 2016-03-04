@@ -10,11 +10,11 @@ import static org.testng.AssertJUnit.assertTrue;
 /**
  * Created by Thiemo on 29.02.2016.
  */
-public class ContemplateAboutTheEmptyJsonObject {
+public class ContemplateAboutSimpleJsonObjects {
 
     public static final String END_LINE = "\n\t->";
 
-    @Test()
+    @Test
     public void aboutTheLength(){
         JSONObject bazinga = new JSONObject();
 

@@ -2,7 +2,7 @@ package de.pardertec.koans;
 
 import de.pardertec.koans.json.ContemplateAboutAssertions;
 import de.pardertec.koans.json.ContemplateAboutComplexJsonObjects;
-import de.pardertec.koans.json.ContemplateAboutTheEmptyJsonObject;
+import de.pardertec.koans.json.ContemplateAboutSimpleJsonObjects;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;
@@ -32,7 +32,7 @@ public class PathToEnlightenment {
 
         Class<?>[] testClassesList = new Class[]{
                 ContemplateAboutAssertions.class,
-                ContemplateAboutTheEmptyJsonObject.class,
+                ContemplateAboutSimpleJsonObjects.class,
                 ContemplateAboutComplexJsonObjects.class
         };
 
