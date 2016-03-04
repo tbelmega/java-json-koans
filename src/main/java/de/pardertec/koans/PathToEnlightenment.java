@@ -93,6 +93,7 @@ public class PathToEnlightenment {
         for (ITestResult singleTestResult: failedTests) {
             System.out.println("\tBeing misguided " + singleTestResult.getName() + " has damaged your karma!");
             System.out.println("\tPlease medidate on " + createLink(singleTestResult) + ".");
+            System.out.println("\t(" + singleTestResult.getThrowable().getMessage() + ")");
         }
     }
 
