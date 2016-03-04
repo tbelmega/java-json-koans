@@ -12,27 +12,30 @@ import static org.testng.AssertJUnit.assertTrue;
  */
 public class ContemplateAboutTheEmptyJsonObject {
 
+    public static final String END_LINE = "\n\t->";
 
     @Test()
-    public void aboutTheSize(){
+    public void aboutTheLength(){
         JSONObject bazinga = new JSONObject();
 
+        int expectedValue = bazinga.length();
         int actualValue = 42;
 
         assertEquals("To reach a higher level of awareness, " +
-                        "cause 'actualValue' to be the number of elements 'bazinga' contains.",
-                bazinga.length(), actualValue);
+                        "cause 'actualValue' to be the number of elements 'bazinga' contains." + END_LINE,
+                expectedValue, actualValue);
     }
 
 
-    @Test(dependsOnMethods = { "aboutTheSize" })
+    @Test(dependsOnMethods = { "aboutTheLength" })
     public void aboutTheToStringMethod(){
         JSONObject bazinga = new JSONObject();
 
+        String expectedValue = bazinga.toString();
         String actualValue = "To reach a higher level of awareness, " +
                 "contemplate about what the value of this String should be.";
 
-        assertEquals(bazinga.toString(), actualValue);
+        assertEquals(expectedValue, actualValue);
     }
 
 
@@ -45,7 +48,7 @@ public class ContemplateAboutTheEmptyJsonObject {
         int actualValue = bazinga.getInt("TheAnswer");
 
         assertEquals("To reach a higher level of awareness, " +
-                "contemplate about what value for the 'TheAnswer' property you should put into 'bazinga' object.",
+                "contemplate about what value for the 'TheAnswer' property you should put into 'bazinga' object." + END_LINE,
                 expectedValue, actualValue);
     }
 
@@ -59,7 +62,7 @@ public class ContemplateAboutTheEmptyJsonObject {
         String actualValue = bazinga.toString();
 
         assertEquals("To reach a higher level of awareness, contemplate about what you should put into the 'bazinga' object, " +
-                "so that it's string representation matches the expectation.",
+                "so that it's string representation matches the expectation." + END_LINE,
                 expectedValue, actualValue);
     }
 
@@ -67,32 +70,33 @@ public class ContemplateAboutTheEmptyJsonObject {
     @Test(dependsOnMethods = { "aboutTheStringRepresentationAfterPuttingAnElementIn" })
     public void aboutPuttingAStringIn(){
         JSONObject bazinga = new JSONObject();
-        bazinga.put("Description", "The Hitchhiker's Guide to the Galaxy, by Douglas Adams");
+        bazinga.put("Description", "The Hitchhiker's Guide to the Galaxy");
 
         String expectedValue = "The Answer to the Ultimate Question of Life, the Universe, and Everything";
         String actualValue = bazinga.getString("Description");
 
         assertEquals("To reach a higher level of awareness, " +
-                "contemplate about what value the 'Description' property should have", expectedValue, actualValue);
+                "contemplate about what value the 'Description' property should have" + END_LINE, expectedValue, actualValue);
     }
 
 
     @Test(dependsOnMethods = { "aboutPuttingAStringIn" })
     public void aboutGettingAPropertyThatDoesNotExist(){
         JSONObject bazinga = new JSONObject();
+        bazinga.put("Title","");
 
         boolean propertyDoesExist = bazinga.has("Description");
 
         assertTrue("The 'has()' method checks whether a JSONObject contains a property with the specified name. " +
                 "To reach a higher level of awareness, " +
-                "contemplate about what property you need to put into the 'bazinga' object.", propertyDoesExist);
+                "contemplate about what property you need to put into the 'bazinga' object." + END_LINE, propertyDoesExist);
     }
 
 
     @Test(dependsOnMethods = { "aboutGettingAPropertyThatDoesNotExist" })
     public void aboutGettingAStringWithIncorrectType(){
         JSONObject bazinga = new JSONObject();
-        bazinga.put("TheAnswer", "The Answer to the Ultimate Question of Life, the Universe, and Everything");
+        bazinga.put("TheAnswer", "The answer to life, the universe and everything");
 
         try {
             int theAnswer = bazinga.getInt("TheAnswer");
@@ -100,7 +104,7 @@ public class ContemplateAboutTheEmptyJsonObject {
             throw new JSONException("Java is type save, JSON is not. Even if the 'bazinga' object contains a property with the specified name, " +
                     "it might have the wrong type. " +
                     "To reach a higher level of awareness, " +
-                    "contemplate about what type of value you should set for the 'TheAnswer' property.");
+                    "contemplate about what type of value you should set for the 'TheAnswer' property." + END_LINE);
         }
     }
 

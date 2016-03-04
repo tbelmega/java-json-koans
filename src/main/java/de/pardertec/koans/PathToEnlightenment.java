@@ -23,13 +23,9 @@ import java.util.List;
  */
 public class PathToEnlightenment {
 
-    private TestNG testNG;
-    private TestListenerAdapter listener;
-
-    public PathToEnlightenment() {
-        this.testNG = new TestNG();
-        this.testNG.setVerbose(0);
-    }
+    //////////////////////////////////
+    // MAIN METHOD
+    //////////////////////////////////
 
     public static void main(String args[]) throws Exception {
         PathToEnlightenment runner = new PathToEnlightenment();
@@ -42,6 +38,28 @@ public class PathToEnlightenment {
 
         runner.run(testClassesList);
     }
+
+
+    //////////////////////////////////
+    // FIELDS
+    //////////////////////////////////
+
+    private TestNG testNG;
+    private TestListenerAdapter listener;
+
+
+    //////////////////////////////////
+    // CONSTRUCTORS
+    //////////////////////////////////
+
+    public PathToEnlightenment() {
+        this.testNG = new TestNG();
+        this.testNG.setVerbose(0);
+    }
+
+    //////////////////////////////////
+    // METHODS
+    //////////////////////////////////
 
     private void run(Class<?>[] testClassesList) throws ClassNotFoundException, NotFoundException {
         for (int i = 0; i < testClassesList.length && !testNG.hasFailure(); i++) {
@@ -57,6 +75,7 @@ public class PathToEnlightenment {
             printPassedTestMessages();
             printFailedTestMessage();
         }
+        if (!testNG.hasFailure()) printSuccess();
     }
 
 
@@ -64,14 +83,10 @@ public class PathToEnlightenment {
         System.out.println();
         int failedAndSkippedTests = listener.getFailedTests().size() + listener.getSkippedTests().size();
 
-        if (failedAndSkippedTests > 0) {
+        if (failedAndSkippedTests > 0 && lessonsToGo >= 0) {
             System.out.println("Much to learn you still have, young padawan. But learn you will.");
             System.out.println(failedAndSkippedTests + " koans and " + lessonsToGo + " more lessons apart from enlightenment you are.");
-        } else {
-            System.out.println("Congratulations, my young padawan! Enlightenment you have reached! May the force be with you.");
         }
-
-        System.out.println();
     }
 
     private void printTestClassMessage(Class<?> testClass) {
@@ -97,7 +112,10 @@ public class PathToEnlightenment {
         }
     }
 
-
+    private void printSuccess() {
+        System.out.println();
+        System.out.println("Congratulations, my young padawan! Enlightenment you have reached! May the force be with you.");
+    }
 
     /**
      * Returns a string matching the pattern <QualifiedClassName> (<SimpleClassName>.java:<LineNumber>)
@@ -115,5 +133,4 @@ public class PathToEnlightenment {
 
         return testClassFullName + " (" + testClassSimpleName + ".java:" + lineNumber + ")";
     }
-
 }
