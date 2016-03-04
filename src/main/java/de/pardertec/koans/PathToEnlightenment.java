@@ -51,28 +51,32 @@ public class PathToEnlightenment {
             testNG.setTestClasses(new Class[] { testClass } );
             testNG.addListener(listener);
             testNG.run();
-            
+
+            printResume(testClassesList.length -1 -i);
             printTestClassMessage(testClass);
             printPassedTestMessages();
             printFailedTestMessage();
-            printResume(testClassesList.length -1 -i);
         }
     }
+
 
     private void printResume(int lessonsToGo) {
         System.out.println();
         int failedAndSkippedTests = listener.getFailedTests().size() + listener.getSkippedTests().size();
 
         if (failedAndSkippedTests > 0) {
-            System.out.println("You are still " + failedAndSkippedTests + " koans and " + lessonsToGo + " more lessons apart from enlightenment.");
+            System.out.println("Much to learn you still have, young padawan. But learn you will.");
+            System.out.println(failedAndSkippedTests + " koans and " + lessonsToGo + " more lessons apart from enlightenment you are.");
         } else {
-            System.out.println("Congratulations! You have reached enlightenment!");
+            System.out.println("Congratulations, my young padawan! Enlightenment you have reached! May the force be with you.");
         }
+
+        System.out.println();
     }
 
     private void printTestClassMessage(Class<?> testClass) {
         System.out.println();
-        System.out.println("One should " + testClass.getSimpleName() + ".");
+        System.out.println(testClass.getSimpleName() + " one should.");
     }
 
     private void printPassedTestMessages() {
@@ -91,6 +95,8 @@ public class PathToEnlightenment {
             System.out.println("\tPlease medidate on " + createLink(singleTestResult) + ".");
         }
     }
+
+
 
     /**
      * Returns a string matching the pattern <QualifiedClassName> (<SimpleClassName>.java:<LineNumber>)
