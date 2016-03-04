@@ -30,6 +30,8 @@ public class ContemplateAboutSimpleJSONArrays {
     @Test(dependsOnMethods = { "aboutTheLength" })
     public void aboutTheToStringMethod(){
         JSONArray bazinga = new JSONArray();
+        bazinga.put(1);
+        bazinga.put(17);
         bazinga.put(42);
 
         String expectedValue = bazinga.toString();
@@ -60,7 +62,7 @@ public class ContemplateAboutSimpleJSONArrays {
         bazinga.put("a comma-separated list of elements");
         bazinga.put(true);
 
-        String expectedValue = "[1337,\"TheAnswer\",true]";
+        String expectedValue = "[42,\"TheAnswer\",true]";
         String actualValue = bazinga.toString();
 
         assertEquals("To reach a higher level of awareness, " +
@@ -136,7 +138,7 @@ public class ContemplateAboutSimpleJSONArrays {
 
         try {
             int index = 0;
-            Object firstElement = bazinga.getBoolean(index); //change bazinga.getInt() to a method that matches the type of the first element
+            Object firstElement = bazinga.getBoolean(index); //change bazinga.getBoolean() to a method that matches the type of the first element
         } catch (JSONException e) {
             fail("To reach a higher level of awareness, " +
                     "contemplate about using the correct getter method.");
